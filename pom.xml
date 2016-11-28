@@ -2,8 +2,17 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.agilestage</groupId>
   <artifactId>agilestage-parent</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+	
+	<modules>
+		<module>agilestage-framework</module>
+		<module>agilestage-components</module>
+		<module>agilestage-app</module>
+		<module>agilestage-admin</module>
+		<module>agilestage-service</module>
+	</modules>
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
@@ -237,13 +246,6 @@
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
-	<modules>
-		<module>agilestage-framework</module>
-		<module>agilestage-web</module>
-		<module>agilestage-app</module>
-		<module>agilestage-admin</module>
-		<module>agilestage-service</module>
-	</modules>
 
 	<build>
 		<defaultGoal>compile</defaultGoal>
