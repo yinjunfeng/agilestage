@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/mvc 
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	
+	<!-- 指定自动扫描路径 -->
+	<context:component-scan base-package="com.agilestage">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	
+	<!-- rest 风格 访问静态资源 -->
+	<mvc:default-servlet-handler />
+
+	<!-- 默认的注解映射的支持 自动注册DefaultAnnotationHandlerMapping 与AnnotationMethodHandlerAdapter这两个bean -->
+	<mvc:annotation-driven />
+    
+    <!-- 全局异常配置  -->  
+    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
+        <property name="exceptionMappings">  
+            <props>  
+                <prop key="java.lang.Exception">/error</prop>  
+                <prop key="java.lang.Throwable">/error</prop>  
+            </props>  
+        </property>  
+        <property name="exceptionAttribute" value="ex"></property>
+        <!-- 默认错误页面，当找不到上面mappings中指定的异常对应视图时，使用本默认配置 -->  
+        <property name="defaultErrorView" value="/error.jsp"></property>  
+    </bean> 
+    
+	<!-- ajax 返回json 配置 -->
+    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" />
+	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+		<property name="favorPathExtension" value="false" />
+	</bean>
+  
+	<!-- 解析视图 -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">  
+        <property name="viewClass"  
+            value="org.springframework.web.servlet.view.JstlView" />  
+        <property name="prefix" value="/" />  
+        <property name="suffix" value=".jsp" />  
+    </bean>  
+
+</beans>
