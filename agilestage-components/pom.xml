@@ -10,9 +10,9 @@
 	</parent>
 	
 	<modules>
-		<module>agilestage-security</module>
+		<!-- <module>agilestage-security</module>
 		<module>agilestage-order</module>
-		<module>agilestage-product</module>
+		<module>agilestage-product</module> -->
 		<module>agilestage-member</module>
 	</modules>
 	
