@@ -10,8 +10,7 @@
 	</parent>
 	
 	<modules>
-		<module>agilestage-service-web</module>
-		<module>agilestage-service-app</module>
+		
 	</modules>
 	
 	<properties>
